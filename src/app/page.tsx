@@ -1,4 +1,5 @@
 import ConsultationTools from "@/santen/ConsultationTools";
+import LanguageSelector from "@/santen/LanguageSelector";
 import {
   allowed,
   bookingSteps,
@@ -88,9 +89,12 @@ function Header() {
             </a>
           ))}
         </nav>
-        <a className="btn-primary hidden sm:inline-flex" href="#booking">
+        <div className="hidden items-center gap-3 sm:flex">
+          <LanguageSelector />
+          <a className="btn-primary" href="#booking">
           预约咨询
-        </a>
+          </a>
+        </div>
       </div>
     </header>
   );
