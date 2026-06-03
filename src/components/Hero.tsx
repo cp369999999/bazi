@@ -17,6 +17,13 @@ export default function Hero() {
           <blockquote className="mt-9 rounded-[28px] border border-line/70 bg-rice/75 p-6 text-tea shadow-paper">
             <p className="whitespace-pre-line leading-8">{brand.signature}</p>
           </blockquote>
+          <div className="mt-5 flex flex-wrap gap-3">
+            {brand.experience.map((item) => (
+              <span className="rounded-full border border-line bg-rice px-4 py-2 text-sm font-bold text-tea" key={item}>
+                {item}
+              </span>
+            ))}
+          </div>
         </div>
         <div className="paper-card relative min-h-[390px] overflow-hidden p-8">
           <div className="absolute right-8 top-6 rounded-full border border-line px-4 py-1 text-sm text-mutedTea">命已定 · 运自造</div>

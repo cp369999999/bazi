@@ -15,6 +15,7 @@ export default function AboutSection({ compact = false }: { compact?: boolean })
             <span className="eyebrow">ABOUT · 人生军师系统</span>
             <div className="mt-4 grid gap-4 text-mutedTea">
               <p>陈鹏AI先生，是一个把 AI、命理、人生观察和商业洞察结合起来的命运推演系统。</p>
+              <p>{brand.origin}</p>
               <p>我一直相信，人的很多底层结构，从出生那一刻就已经写下。性格、天赋、欲望、恐惧、选择方式，都会在漫长的人生里反复出现。</p>
               {!compact && (
                 <>
