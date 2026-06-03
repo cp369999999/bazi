@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import LiuYaoSection from "./components/LiuYaoSection";
@@ -35,6 +36,7 @@ export default function App() {
 
   return (
     <>
+      <Analytics />
       <Header />
       {route === "home" && (
         <main>
