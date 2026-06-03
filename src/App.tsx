@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import LiuYaoSection from "./components/LiuYaoSection";
@@ -9,10 +9,12 @@ import PremiumReports from "./components/PremiumReports";
 import AboutSection from "./components/AboutSection";
 import Footer from "./components/Footer";
 import AdminOverlay from "./components/AdminOverlay";
-import { brand } from "./content/brand";
+import { brand, reports as defaultReports } from "./content/brand";
 import { liuyaoCopy } from "./content/liuyao";
 import { generateLiuYaoHexagram } from "./lib/liuyao";
+import { getReportProducts, getSiteSettings, saveBaziSubmission, saveLiuYaoSubmission } from "./lib/supabase";
 import type { LiuYaoFormData, LiuYaoResult as LiuYaoResultType } from "./types/liuyao";
+import type { ReportProduct, SiteSettings } from "./types/site";
 
 type Route = "home" | "liuyao" | "about" | "liuyao-report" | "result";
 
@@ -26,19 +28,35 @@ export default function App() {
     return "home";
   }, []);
   const [liuYaoResult, setLiuYaoResult] = useState<LiuYaoResultType | null>(null);
+  const [siteSettings, setSiteSettings] = useState<SiteSettings | undefined>();
+  const [reportProducts, setReportProducts] = useState<ReportProduct[]>(defaultReports);
 
-  const handleLiuYaoSubmit = (formData: LiuYaoFormData) => {
+  useEffect(() => {
+    async function loadRemoteContent() {
+      try {
+        const [settings, products] = await Promise.all([getSiteSettings(), getReportProducts()]);
+        if (settings) setSiteSettings(settings);
+        if (products.length) setReportProducts(products);
+      } catch (error) {
+        console.warn("Supabase content load failed", error);
+      }
+    }
+    loadRemoteContent();
+  }, []);
+
+  const handleLiuYaoSubmit = async (formData: LiuYaoFormData) => {
     const result = generateLiuYaoHexagram(formData);
     setLiuYaoResult(result);
+    saveLiuYaoSubmission(formData, result).catch((error) => console.warn("保存六爻提交失败", error));
     window.setTimeout(() => document.getElementById("liuyao-result")?.scrollIntoView({ behavior: "smooth" }), 80);
   };
 
   return (
     <>
-      <Header />
+      <Header nav={siteSettings?.nav || brand.nav} />
       {route === "home" && (
         <main>
-          <Hero />
+          <Hero settings={siteSettings} />
           <LiuYaoSection />
           <section id="ai-bazi" className="section-wrap">
             <div className="section-heading">
@@ -50,7 +68,8 @@ export default function App() {
           </section>
           <PastLifeSection />
           <InsightSections />
-          <PremiumReports />
+          <PremiumReports products={reportProducts} />
+          <FaqSection faq={siteSettings?.faq} />
           <AboutSection compact />
         </main>
       )}
@@ -101,11 +120,44 @@ export default function App() {
   );
 }
 
+function FaqSection({ faq }: { faq?: SiteSettings["faq"] }) {
+  const items = faq?.length ? faq : [
+    { q: "AI命盘是什么？", a: "AI命盘帮助你理解性格底层、天赋剧本和人生方向。" },
+    { q: "六爻问事适合问什么？", a: "适合问当下具体的一件事，例如工作、关系、合作、项目、考试或人生方向。" },
+    { q: "结果是绝对准确的吗？", a: "不是。系统内容仅作为自我认知、情绪整理和决策参考。" }
+  ];
+  return (
+    <section className="section-wrap" id="faq">
+      <div className="section-heading">
+        <span className="eyebrow">FAQ · 常见问题</span>
+        <h2>常见问题</h2>
+      </div>
+      <div className="grid gap-4">
+        {items.map((item) => (
+          <details className="paper-card p-5" key={item.q}>
+            <summary className="cursor-pointer font-bold text-ink">{item.q}</summary>
+            <p className="mt-3 text-mutedTea">{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function BirthGuideCard() {
-  const submitBirth = (event: React.FormEvent<HTMLFormElement>) => {
+  const submitBirth = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = Object.fromEntries(new FormData(event.currentTarget).entries());
     localStorage.setItem("mingpan_result_profile", JSON.stringify({ ...data, submitTime: Date.now() }));
+    await saveBaziSubmission({
+      name: String(data.name || ""),
+      gender: String(data.gender || ""),
+      birthDate: String(data.birthDate || ""),
+      birthTime: String(data.birthTime || ""),
+      birthCity: String(data.city || ""),
+      focus: String(data.focus || ""),
+      payload: { ...data, submitTime: Date.now() }
+    }).catch((error) => console.warn("保存命盘提交失败", error));
     window.location.href = "/result";
   };
 

@@ -29,3 +29,31 @@ npm run build
 ```
 
 构建产物在 `dist/`。
+
+## Supabase
+
+1. 在 Supabase SQL Editor 执行：
+
+```text
+supabase/schema.sql
+```
+
+2. 本地新建 `.env.local`：
+
+```text
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
+```
+
+3. Vercel 环境变量也添加同名两项：
+
+```text
+VITE_SUPABASE_URL
+VITE_SUPABASE_ANON_KEY
+```
+
+后台入口：
+
+```text
+/?admin=mingpan2026
+```

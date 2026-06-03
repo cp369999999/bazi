@@ -1,6 +1,7 @@
 import { brand } from "../content/brand";
+import type { NavItem } from "../types/site";
 
-export default function Header() {
+export default function Header({ nav = brand.nav }: { nav?: NavItem[] }) {
   return (
     <header className="sticky top-0 z-40 border-b border-line/60 bg-paper/88 backdrop-blur-xl">
       <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3">
@@ -12,7 +13,7 @@ export default function Header() {
           </span>
         </a>
         <div className="hidden flex-wrap items-center justify-end gap-4 text-sm font-medium text-mutedTea lg:flex">
-          {brand.nav.map((item) => (
+          {nav.map((item) => (
             <a className="transition hover:text-tea" href={item.href} key={item.label}>
               {item.label}
             </a>

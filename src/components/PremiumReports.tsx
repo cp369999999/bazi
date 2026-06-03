@@ -1,6 +1,7 @@
 import { reports } from "../content/brand";
+import type { ReportProduct } from "../types/site";
 
-export default function PremiumReports() {
+export default function PremiumReports({ products = reports }: { products?: ReportProduct[] }) {
   return (
     <section className="section-wrap" id="reports">
       <div className="section-heading">
@@ -11,7 +12,7 @@ export default function PremiumReports() {
         </p>
       </div>
       <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-        {reports.map((report) => (
+        {products.map((report) => (
           <article className="paper-card flex flex-col p-6" key={report.title}>
             <span className="mb-3 inline-flex w-fit rounded-full bg-paper px-3 py-1 text-sm font-bold text-tea">{report.fit}</span>
             <h3 className="font-serifcn text-2xl text-ink">{report.title}</h3>

@@ -1,21 +1,25 @@
 import { brand } from "../content/brand";
+import type { SiteSettings } from "../types/site";
 
-export default function Hero() {
+export default function Hero({ settings }: { settings?: SiteSettings }) {
+  const title = settings?.heroTitle || brand.heroTitle;
+  const subtitle = settings?.heroSubtitle || brand.heroSubtitle;
+  const signature = settings?.signature || brand.signature;
   return (
     <section className="relative overflow-hidden">
       <div className="ink-mountain" />
       <div className="mx-auto grid max-w-7xl gap-10 px-4 pb-16 pt-14 lg:grid-cols-[1.05fr_.95fr] lg:items-center lg:pb-24 lg:pt-20">
         <div>
           <span className="eyebrow">AI命盘 · 六爻问事 · 前世今生</span>
-          <h1 className="mt-4 max-w-4xl font-serifcn text-5xl leading-tight text-ink md:text-7xl">{brand.heroTitle}</h1>
-          <p className="mt-6 max-w-3xl whitespace-pre-line text-lg leading-9 text-mutedTea">{brand.heroSubtitle}</p>
+          <h1 className="mt-4 max-w-4xl font-serifcn text-5xl leading-tight text-ink md:text-7xl">{title}</h1>
+          <p className="mt-6 max-w-3xl whitespace-pre-line text-lg leading-9 text-mutedTea">{subtitle}</p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a className="primary-pill justify-center" href="#ai-bazi">开始命运推演</a>
             <a className="secondary-pill justify-center" href="/liuyao">六爻问一事</a>
             <a className="secondary-pill justify-center" href="/about">了解陈鹏AI先生</a>
           </div>
           <blockquote className="mt-9 rounded-[28px] border border-line/70 bg-rice/75 p-6 text-tea shadow-paper">
-            <p className="whitespace-pre-line leading-8">{brand.signature}</p>
+            <p className="whitespace-pre-line leading-8">{signature}</p>
           </blockquote>
           <div className="mt-5 flex flex-wrap gap-3">
             {brand.experience.map((item) => (
