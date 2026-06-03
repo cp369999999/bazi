@@ -1,6 +1,6 @@
-# 陈鹏AI先生 · 命运推演系统
+# 参命 Santen
 
-AI命盘、六爻问事、前世今生与人生军师系统。
+高端东方命理预约咨询品牌网站。主理人陈鹏，10年命理经验，专注女性情感、婚恋合盘、事业财运、六爻测事、命盘详批与取名择吉。
 
 ## 本地运行
 
@@ -11,15 +11,8 @@ npm run dev
 
 访问：
 
-- 首页：http://127.0.0.1:4173/
-- 六爻问事：http://127.0.0.1:4173/liuyao
-- 关于陈鹏AI先生：http://127.0.0.1:4173/about
-- 后台入口：http://127.0.0.1:4173/?admin=mingpan2026
-
-后台密码：
-
 ```text
-mingpan2026admin
+http://127.0.0.1:4173/
 ```
 
 ## 构建
@@ -28,32 +21,40 @@ mingpan2026admin
 npm run build
 ```
 
-构建产物在 `dist/`。
+Next.js 构建产物由 `.next/` 管理，Vercel 会自动识别。
 
-## Supabase
+## 修改文案
 
-1. 在 Supabase SQL Editor 执行：
-
-```text
-supabase/schema.sql
-```
-
-2. 本地新建 `.env.local`：
+主要内容集中在：
 
 ```text
-VITE_SUPABASE_URL=https://your-project.supabase.co
-VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
+src/santen/content.ts
 ```
 
-3. Vercel 环境变量也添加同名两项：
+可在这里修改：
+
+- 品牌名称、主理人、口号
+- 导航
+- 服务项目与价格
+- 预约流程
+- FAQ
+- 内容允许/禁止边界
+
+## 修改互动预览
+
+互动咨询模块在：
 
 ```text
-VITE_SUPABASE_URL
-VITE_SUPABASE_ANON_KEY
+src/santen/ConsultationTools.tsx
+src/santen/simulators.ts
 ```
 
-后台入口：
+后续接 AI API 时，可把 `simulateConsultation()` 替换为真实接口请求。
 
-```text
-/?admin=mingpan2026
-```
+## 部署
+
+1. 推送代码到 GitHub。
+2. Vercel 新建项目，选择该仓库。
+3. Framework Preset 选择 `Next.js`。
+4. Build Command 使用 `npm run build`。
+5. Output Directory 留空。

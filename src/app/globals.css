@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --paper: #f7efe2;
+  --rice: #fffaf1;
+  --sand: #ead7bd;
+  --tea: #6f4524;
+  --ink: #2f241b;
+  --muted: #9a7b61;
+  --line: #d9b98d;
+  --seal: #9b4c2f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(217, 185, 141, 0.32), transparent 34%),
+    radial-gradient(circle at 82% 12%, rgba(154, 76, 47, 0.1), transparent 30%),
+    linear-gradient(180deg, #fffaf1 0%, #f7efe2 52%, #efe0cc 100%);
+  color: var(--ink);
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+body::before {
+  background-image:
+    linear-gradient(110deg, rgba(111, 69, 36, 0.055) 0 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+  background-size: 88px 88px, 100% 100%;
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: fixed;
+  z-index: -1;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: rgba(111, 69, 36, 0.18);
+}
+
+@layer components {
+  .page-shell {
+    @apply mx-auto max-w-7xl px-5 sm:px-7 lg:px-10;
+  }
+
+  .section {
+    @apply mx-auto max-w-7xl px-5 py-16 sm:px-7 lg:px-10 lg:py-24;
+  }
+
+  .section-title {
+    @apply mx-auto mb-10 max-w-3xl text-center;
+  }
+
+  .section-title span,
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.28em] text-mutedTea;
+  }
+
+  .section-title h2 {
+    @apply mt-3 font-serifcn text-3xl leading-tight text-ink sm:text-5xl;
+  }
+
+  .section-title p {
+    @apply mt-5 text-base leading-8 text-mutedTea sm:text-lg;
+  }
+
+  .card {
+    @apply rounded-[32px] border border-line/80 bg-rice/80 shadow-soft backdrop-blur-sm;
+  }
+
+  .ink-card {
+    @apply rounded-[32px] border border-line/70 bg-paper/80 shadow-soft;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center rounded-full bg-tea px-7 py-4 text-sm font-semibold text-rice shadow-soft transition hover:-translate-y-0.5 hover:bg-ink;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center rounded-full border border-line bg-rice/70 px-7 py-4 text-sm font-semibold text-tea transition hover:-translate-y-0.5 hover:border-tea hover:bg-paper;
+  }
+
+  .input {
+    @apply w-full rounded-[22px] border border-line bg-rice px-5 py-4 text-ink outline-none transition placeholder:text-mutedTea/60 focus:border-tea focus:ring-4 focus:ring-line/25;
+  }
+
+  .seal {
+    @apply inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-seal/40 bg-seal/10 font-serifcn text-seal;
+  }
+}
+
+.mountain-bg {
+  background:
+    linear-gradient(180deg, rgba(255, 250, 241, 0.2), rgba(255, 250, 241, 0.88)),
+    radial-gradient(circle at 20% 72%, rgba(111, 69, 36, 0.18), transparent 28%),
+    radial-gradient(circle at 48% 78%, rgba(217, 185, 141, 0.45), transparent 34%),
+    radial-gradient(circle at 82% 70%, rgba(111, 69, 36, 0.12), transparent 30%);
+}
