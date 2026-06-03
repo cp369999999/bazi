@@ -11,6 +11,7 @@ export default function SantenHome() {
       <main>
         <Hero />
         <BrandAttitude />
+        <PastLifeSection />
         <Services />
         <Booking />
         <ConsultationTools />
@@ -25,6 +26,10 @@ export default function SantenHome() {
 
 function Header() {
   const { t } = useI18n();
+  const navItems = t.brand.nav.some((item) => item.href === "#past-life")
+    ? t.brand.nav
+    : [t.brand.nav[0], { label: t.pastLife.navLabel, href: "#past-life" }, ...t.brand.nav.slice(1)];
+
   return (
     <header className="sticky top-0 z-30 border-b border-line/50 bg-rice/80 backdrop-blur-xl">
       <div className="page-shell flex min-h-20 items-center justify-between gap-5">
@@ -36,7 +41,7 @@ function Header() {
           </span>
         </a>
         <nav className="hidden items-center gap-6 text-sm font-medium text-mutedTea lg:flex">
-          {t.brand.nav.map((item) => (
+          {navItems.map((item) => (
             <a className="transition hover:text-tea" href={item.href} key={item.label}>
               {item.label}
             </a>
@@ -129,8 +134,47 @@ function BrandAttitude() {
   );
 }
 
+function PastLifeSection() {
+  const { t } = useI18n();
+  return (
+    <section className="section" id="past-life">
+      <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
+        <div className="card mountain-bg p-8 sm:p-10">
+          <span className="eyebrow">{t.pastLife.eyebrow}</span>
+          <h2 className="mt-4 font-serifcn text-4xl leading-tight text-ink sm:text-5xl">{t.pastLife.title}</h2>
+          <p className="mt-5 text-xl leading-9 text-tea">{t.pastLife.subtitle}</p>
+          <p className="mt-5 leading-8 text-mutedTea">{t.pastLife.body}</p>
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+            <a className="btn-primary justify-center" href="#interactive">
+              {t.pastLife.primaryCta}
+            </a>
+            <a className="btn-outline justify-center" href="#booking">
+              {t.pastLife.secondaryCta}
+            </a>
+          </div>
+          <p className="mt-6 text-sm leading-7 text-mutedTea">{t.pastLife.note}</p>
+        </div>
+
+        <div className="grid gap-4 sm:grid-cols-2">
+          {t.pastLife.cards.map((card, index) => (
+            <article className="ink-card p-6" key={card.title}>
+              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-tea text-rice">
+                {index + 1}
+              </span>
+              <h3 className="mt-5 font-serifcn text-2xl text-ink">{card.title}</h3>
+              <p className="mt-3 leading-8 text-mutedTea">{card.body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Services() {
   const { t } = useI18n();
+  const serviceItems = [...t.services.items, t.pastLife.service];
+
   return (
     <section className="section" id="services">
       <div className="section-title">
@@ -139,7 +183,7 @@ function Services() {
         <p>{t.services.body}</p>
       </div>
       <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-        {t.services.items.map((service) => (
+        {serviceItems.map((service) => (
           <article className="card flex flex-col p-7" key={service.title}>
             <div className="flex items-start justify-between gap-5">
               <div>

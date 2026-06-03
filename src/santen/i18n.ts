@@ -48,6 +48,18 @@ export interface SiteDictionary {
     eyebrow: string;
     items: { title: string; body: string }[];
   };
+  pastLife: {
+    navLabel: string;
+    eyebrow: string;
+    title: string;
+    subtitle: string;
+    body: string;
+    cards: { title: string; body: string }[];
+    primaryCta: string;
+    secondaryCta: string;
+    note: string;
+    service: { title: string; price: string; scene: string; description: string; delivery: string };
+  };
   services: {
     eyebrow: string;
     title: string;
@@ -206,6 +218,29 @@ export const dictionaries: Record<LanguageCode, SiteDictionary> = {
         { title: "命运结构洞察", body: "看性格底层、关系模式、财运路径与关键节点。" }
       ]
     },
+    pastLife: {
+      navLabel: "前世今生",
+      eyebrow: "Past Life Narrative",
+      title: "前世今生 · 灵魂剧本推演",
+      subtitle: "有些性格，不像是这一生才形成的。有些关系，也不像是偶然才遇见的。",
+      body: "前世今生不是为了制造神秘感，而是用一种更深的叙事方式，帮你理解那些反复出现的人生课题、关系模式、执念、天赋和恐惧。当你看懂这些重复出现的模式，就不会再一味责怪自己。",
+      cards: [
+        { title: "前世能量", body: "分析你可能携带的性格惯性、执念、天赋来源与内在熟悉感。" },
+        { title: "今生课题", body: "梳理这一生最重要的成长方向、事业挑战与情感模式。" },
+        { title: "灵魂关系", body: "观察亲密关系、合作关系、贵人与消耗型关系的牵引模式。" },
+        { title: "命运节点", body: "整理人生关键转折、流年机会、低谷期与上升期。" }
+      ],
+      primaryCta: "开始前世今生推演",
+      secondaryCta: "生成完整灵魂报告",
+      note: "本模块采用命盘结构与 AI 叙事推演，不做绝对断言，仅作为自我理解与关系复盘参考。",
+      service: {
+        title: "前世今生灵魂剧本报告",
+        price: "¥1999",
+        scene: "潜意识模式 / 关系牵引 / 人生课题",
+        description: "网站特色项目，适合想理解反复关系、情绪惯性、天赋来源与人生主题的人。",
+        delivery: "AI深度文稿 + 30分钟追问"
+      }
+    },
     services: {
       eyebrow: "Service Matrix",
       title: "服务矩阵",
@@ -328,6 +363,29 @@ export const dictionaries: Record<LanguageCode, SiteDictionary> = {
     hero: { eyebrow: "Private Eastern Astrology Consultation", primaryCta: "預約高端諮詢", servicesCta: "查看服務項目", previewCta: "體驗交付結構", highlights: ["高客單預約制", "女性情感與婚戀合盤", "事業財運關鍵決策", "AI 文稿 + 人工交付", "微信 / WhatsApp / TG 全球可約"] },
     compass: { eyebrow: "Consulting Compass", title: "不是算熱鬧，是看結構。", body: "關係為什麼反覆拉扯，財運為什麼卡在同一處，事業為什麼總在關鍵節點猶豫。參命做的是結構洞察，不是廉價斷語。", items: ["女性情感與婚戀合盤", "事業財運與關鍵決策", "命盤詳批與長期規劃"], quote: "命理不是替你做決定，而是讓你更清楚：此刻該進，還是該退。" },
     attitude: { eyebrow: "Attitude", items: [{ title: "高端預約制", body: "取消低端免費入口，把時間留給真正需要深度諮詢的人。" }, { title: "參考性質", body: "不承諾絕對準確，不製造恐懼，所有結論都回到現實選擇。" }, { title: "命運結構洞察", body: "看性格底層、關係模式、財運路徑與關鍵節點。" }] },
+    pastLife: {
+      navLabel: "前世今生",
+      eyebrow: "Past Life Narrative",
+      title: "前世今生 · 靈魂劇本推演",
+      subtitle: "有些性格，不像是這一生才形成的。有些關係，也不像是偶然才遇見的。",
+      body: "前世今生不是為了製造神秘感，而是用一種更深的敘事方式，幫你理解那些反覆出現的人生課題、關係模式、執念、天賦和恐懼。當你看懂這些重複出現的模式，就不會再一味責怪自己。",
+      cards: [
+        { title: "前世能量", body: "分析你可能攜帶的性格慣性、執念、天賦來源與內在熟悉感。" },
+        { title: "今生課題", body: "梳理這一生最重要的成長方向、事業挑戰與情感模式。" },
+        { title: "靈魂關係", body: "觀察親密關係、合作關係、貴人與消耗型關係的牽引模式。" },
+        { title: "命運節點", body: "整理人生關鍵轉折、流年機會、低谷期與上升期。" }
+      ],
+      primaryCta: "開始前世今生推演",
+      secondaryCta: "生成完整靈魂報告",
+      note: "本模組採用命盤結構與 AI 敘事推演，不做絕對斷言，僅作為自我理解與關係復盤參考。",
+      service: {
+        title: "前世今生靈魂劇本報告",
+        price: "¥1999",
+        scene: "潛意識模式 / 關係牽引 / 人生課題",
+        description: "網站特色項目，適合想理解反覆關係、情緒慣性、天賦來源與人生主題的人。",
+        delivery: "AI深度文稿 + 30分鐘追問"
+      }
+    },
     services: {
       eyebrow: "Service Matrix",
       title: "服務矩陣",
@@ -364,6 +422,29 @@ export const dictionaries: Record<LanguageCode, SiteDictionary> = {
     hero: { eyebrow: "Private Eastern Astrology Consultation", primaryCta: "Book Premium Consultation", servicesCta: "View Services", previewCta: "Preview Delivery", highlights: ["Premium appointment only", "Women’s love & compatibility", "Career and wealth decisions", "AI report + human delivery", "Worldwide via WeChat / WhatsApp / TG"] },
     compass: { eyebrow: "Consulting Compass", title: "Not fortune-telling for fun. We read structure.", body: "Why relationships repeat, why wealth gets stuck, and why career choices become hesitant at key moments. Santen looks at structure, not cheap predictions.", items: ["Love and marriage compatibility", "Career wealth decisions", "Full chart and long-term planning"], quote: "Astrology is not here to decide for you. It helps you see whether this moment asks you to move forward or step back." },
     attitude: { eyebrow: "Attitude", items: [{ title: "Premium Booking", body: "No free low-end entry. Time is reserved for clients who need serious, private consultation." }, { title: "Reference Only", body: "No absolute promises, no fear language. Every conclusion returns to real choices." }, { title: "Destiny Structure", body: "We read personality foundations, relationship patterns, wealth paths, and turning points." }] },
+    pastLife: {
+      navLabel: "Past Life",
+      eyebrow: "Past Life Narrative",
+      title: "Past Life & Present Life · Soul Script Reading",
+      subtitle: "Some personality patterns feel older than this lifetime. Some relationships do not feel accidental.",
+      body: "This module is not built to create superstition. It uses chart structure and AI narrative analysis to help you understand repeated life themes, relationship patterns, attachments, talents, and fears.",
+      cards: [
+        { title: "Past-Life Energy", body: "Reads recurring temperaments, attachments, familiar talents, and emotional instincts." },
+        { title: "Present-Life Lesson", body: "Clarifies the main growth direction, career challenge, and relationship pattern of this life." },
+        { title: "Soul Relationships", body: "Reviews intimacy, partnership, supporters, and draining relationships through a narrative lens." },
+        { title: "Destiny Nodes", body: "Maps turning points, yearly openings, low periods, and rising phases." }
+      ],
+      primaryCta: "Start Soul Script Reading",
+      secondaryCta: "Generate Full Soul Report",
+      note: "This module uses chart structure and AI narrative reasoning. It is for self-understanding and relationship review, not absolute prediction.",
+      service: {
+        title: "Past Life & Soul Script Report",
+        price: "¥1999",
+        scene: "Subconscious patterns / relationship pull / life themes",
+        description: "A signature Santen report for clients who want to understand recurring relationships, emotional inertia, talents, and life themes.",
+        delivery: "AI deep report + 30-minute follow-up"
+      }
+    },
     services: {
       eyebrow: "Service Matrix",
       title: "Services",
@@ -486,6 +567,29 @@ function makeJapaneseDictionary(): SiteDictionary {
     hero: { eyebrow: "Private Eastern Astrology Consultation", primaryCta: "高級相談を予約", servicesCta: "サービスを見る", previewCta: "納品構成を見る", highlights: ["高単価・予約制", "女性の恋愛と相性", "仕事と財運の決断", "AI文稿 + 人による納品", "世界対応"] },
     compass: { eyebrow: "Consulting Compass", title: "ただ占うのではなく、構造を読む。", body: "なぜ関係が繰り返すのか、なぜ財運が止まるのか、なぜ仕事の節目で迷うのか。Santen は安い断言ではなく構造を見ます。", items: ["恋愛と結婚相性", "仕事・財運の決断", "命盤詳批と長期計画"], quote: "命理はあなたの代わりに決めるものではありません。今進むべきか、退くべきかを見やすくするものです。" },
     attitude: { eyebrow: "Attitude", items: [{ title: "高級予約制", body: "無料の低価格入口をなくし、本当に深い相談が必要な方に時間を使います。" }, { title: "参考として", body: "絶対の的中を約束せず、恐怖を作らず、現実の選択に戻します。" }, { title: "運命構造の洞察", body: "性格の土台、関係パターン、財運の道筋、転機を読みます。" }] },
+    pastLife: {
+      ...en.pastLife,
+      navLabel: "前世今生",
+      title: "前世今生 · 魂の脚本リーディング",
+      subtitle: "ある性格は、この人生だけで形成されたものに見えません。ある関係も、偶然だけでは説明しにくいものです。",
+      body: "前世今生は神秘を売るためではなく、繰り返される人生課題、関係パターン、執着、才能、恐れを深い物語として理解するためのモジュールです。",
+      cards: [
+        { title: "前世のエネルギー", body: "持ち越しているように見える性格の癖、執着、才能、内なる既視感を読みます。" },
+        { title: "今生の課題", body: "今世で育てるべき方向、仕事の挑戦、感情パターンを整理します。" },
+        { title: "魂の関係", body: "親密な関係、協力者、支援者、消耗する関係の引力を見ます。" },
+        { title: "運命の節目", body: "人生の転機、流年の機会、低迷期と上昇期を整理します。" }
+      ],
+      primaryCta: "前世今生を始める",
+      secondaryCta: "完全な魂レポートを生成",
+      note: "命盤構造と AI の物語推演を用いた自己理解の参考であり、絶対的な断言ではありません。",
+      service: {
+        title: "前世今生・魂の脚本レポート",
+        price: "¥1999",
+        scene: "潜在意識パターン / 関係の引力 / 人生テーマ",
+        description: "繰り返す関係、感情の癖、才能の源、人生テーマを理解したい方のための Santen 特色レポート。",
+        delivery: "AI深度レポート + 30分フォローアップ"
+      }
+    },
     services: { ...en.services, title: "サービス", body: "恋愛、相性、仕事・財運、重要な決断に向けた高級予約制レポート。", items: en.services.items },
     booking: { ...en.booking, title: "予約の流れ", body: "予約金 ¥399 をお支払い後、アシスタントが日程を確認します。残金未払いの場合は予約金返金またはキャンセル可能です。", primaryCta: "予約金を支払う", secondaryCta: "納品構成を見る" },
     clientCenter: { ...en.clientCenter, title: "顧客センター構想", body: "今後、予約確認、文稿ダウンロード、追問提出、残金通知をここで管理できます。", items: ["予約", "文稿ダウンロード", "追問", "残金通知", "納品記録"] },
@@ -505,6 +609,29 @@ function makeKoreanDictionary(): SiteDictionary {
     hero: { eyebrow: "Private Eastern Astrology Consultation", primaryCta: "프리미엄 상담 예약", servicesCta: "서비스 보기", previewCta: "제공 구조 보기", highlights: ["프리미엄 예약제", "여성 감정과 궁합", "커리어·재운 결정", "AI 문서 + 사람의 전달", "전 세계 상담 가능"] },
     compass: { eyebrow: "Consulting Compass", title: "재미로 보는 점이 아니라 구조를 봅니다.", body: "관계가 왜 반복되는지, 재운이 왜 막히는지, 커리어의 중요한 지점에서 왜 망설이는지. Santen은 싼 단정이 아니라 구조를 읽습니다.", items: ["연애와 결혼 궁합", "커리어·재운 결정", "명반 상세 분석과 장기 계획"], quote: "명리는 당신 대신 결정하지 않습니다. 지금 나아갈지 물러설지 더 선명하게 보게 합니다." },
     attitude: { eyebrow: "Attitude", items: [{ title: "프리미엄 예약제", body: "무료 저가 입구를 없애고 깊은 상담이 필요한 고객에게 시간을 씁니다." }, { title: "참고 성격", body: "절대적 정확성을 약속하지 않고 두려움을 만들지 않으며 현실 선택으로 돌아갑니다." }, { title: "운명 구조 통찰", body: "성격 기반, 관계 패턴, 재운 경로, 전환점을 읽습니다." }] },
+    pastLife: {
+      ...en.pastLife,
+      navLabel: "전생과 현생",
+      title: "전생과 현생 · 영혼 스크립트 리딩",
+      subtitle: "어떤 성격은 이번 생에서만 만들어진 것 같지 않습니다. 어떤 관계도 단순한 우연처럼 느껴지지 않습니다.",
+      body: "전생과 현생 모듈은 신비감을 팔기 위한 것이 아니라 반복되는 삶의 과제, 관계 패턴, 집착, 재능, 두려움을 더 깊은 서사로 이해하도록 돕습니다.",
+      cards: [
+        { title: "전생 에너지", body: "반복되는 성격의 관성, 집착, 익숙한 재능, 내면의 기시감을 읽습니다." },
+        { title: "현생 과제", body: "이번 생에서 성장해야 할 방향, 커리어 과제, 감정 패턴을 정리합니다." },
+        { title: "영혼 관계", body: "친밀한 관계, 협력 관계, 귀인과 소모적 관계의 끌림을 살핍니다." },
+        { title: "운명 노드", body: "인생의 전환점, 해마다 열리는 기회, 저점과 상승기를 정리합니다." }
+      ],
+      primaryCta: "전생과 현생 리딩 시작",
+      secondaryCta: "전체 영혼 리포트 생성",
+      note: "명반 구조와 AI 서사 추론을 활용한 자기 이해 참고 자료이며 절대적 예언이 아닙니다.",
+      service: {
+        title: "전생과 현생 영혼 스크립트 리포트",
+        price: "¥1999",
+        scene: "무의식 패턴 / 관계 끌림 / 삶의 주제",
+        description: "반복되는 관계, 감정 관성, 재능의 근원, 인생 주제를 이해하려는 고객을 위한 Santen 시그니처 리포트.",
+        delivery: "AI 심층 문서 + 30분 후속 질문"
+      }
+    },
     services: { ...en.services, title: "서비스", body: "연애, 궁합, 커리어·재운, 중요한 결정을 위한 프리미엄 예약제 리포트.", items: en.services.items },
     booking: { ...en.booking, title: "예약 절차", body: "예약금 ¥399 결제 후 담당자가 일정을 확인합니다. 잔금 미결제 시 예약금 환불 또는 예약 취소가 가능합니다.", primaryCta: "예약금 결제", secondaryCta: "제공 구조 보기" },
     clientCenter: { ...en.clientCenter, title: "고객 센터 계획", body: "추후 예약 확인, 문서 다운로드, 추가 질문 제출, 잔금 알림을 이곳에서 관리할 수 있습니다.", items: ["내 예약", "문서 다운로드", "추가 질문", "잔금 알림", "제공 기록"] },
@@ -524,6 +651,29 @@ function makeVietnameseDictionary(): SiteDictionary {
     hero: { eyebrow: "Private Eastern Astrology Consultation", primaryCta: "Đặt tư vấn cao cấp", servicesCta: "Xem dịch vụ", previewCta: "Xem cấu trúc báo cáo", highlights: ["Đặt lịch cao cấp", "Tình cảm nữ giới & hợp hôn", "Quyết định sự nghiệp tài vận", "Báo cáo AI + bàn giao thủ công", "Hỗ trợ toàn cầu"] },
     compass: { eyebrow: "Consulting Compass", title: "Không xem cho vui. Chúng tôi đọc cấu trúc.", body: "Vì sao quan hệ lặp lại, vì sao tài vận bị kẹt, vì sao sự nghiệp do dự ở điểm then chốt. Santen đọc cấu trúc, không đưa lời đoán rẻ tiền.", items: ["Tình cảm và hợp hôn", "Sự nghiệp tài vận", "Mệnh bàn chi tiết và kế hoạch dài hạn"], quote: "Mệnh lý không quyết định thay bạn. Nó giúp bạn nhìn rõ lúc này nên tiến hay nên lui." },
     attitude: { eyebrow: "Attitude", items: [{ title: "Đặt lịch cao cấp", body: "Không có lối vào miễn phí giá thấp; thời gian dành cho khách cần tư vấn sâu." }, { title: "Chỉ để tham khảo", body: "Không hứa đúng tuyệt đối, không tạo sợ hãi, mọi kết luận quay về lựa chọn thực tế." }, { title: "Đọc cấu trúc vận mệnh", body: "Đọc nền tính cách, mẫu quan hệ, đường tài vận và nút chuyển đổi." }] },
+    pastLife: {
+      ...en.pastLife,
+      navLabel: "Kiếp trước & hiện tại",
+      title: "Kiếp trước & hiện tại · Kịch bản linh hồn",
+      subtitle: "Có những tính cách dường như không chỉ hình thành trong đời này. Có những mối quan hệ cũng không giống sự gặp gỡ ngẫu nhiên.",
+      body: "Mô-đun này không nhằm tạo cảm giác mê tín, mà dùng cấu trúc mệnh bàn và diễn giải AI để giúp bạn hiểu các chủ đề đời sống, mẫu quan hệ, chấp niệm, tài năng và nỗi sợ lặp lại.",
+      cards: [
+        { title: "Năng lượng kiếp trước", body: "Đọc các quán tính tính cách, chấp niệm, tài năng quen thuộc và cảm giác đã biết từ bên trong." },
+        { title: "Bài học hiện tại", body: "Sắp xếp hướng trưởng thành, thử thách sự nghiệp và mẫu cảm xúc của đời này." },
+        { title: "Quan hệ linh hồn", body: "Quan sát lực kéo trong quan hệ thân mật, hợp tác, quý nhân và quan hệ tiêu hao." },
+        { title: "Nút vận mệnh", body: "Tóm lược các điểm chuyển hướng, cơ hội theo năm, giai đoạn thấp và giai đoạn đi lên." }
+      ],
+      primaryCta: "Bắt đầu đọc kiếp trước",
+      secondaryCta: "Tạo báo cáo linh hồn đầy đủ",
+      note: "Nội dung dùng cấu trúc mệnh bàn và diễn giải AI, chỉ để tham khảo cho tự nhận thức và quan hệ.",
+      service: {
+        title: "Báo cáo kịch bản linh hồn",
+        price: "¥1999",
+        scene: "Mẫu tiềm thức / lực kéo quan hệ / chủ đề đời sống",
+        description: "Báo cáo đặc trưng của Santen cho người muốn hiểu quan hệ lặp lại, quán tính cảm xúc, nguồn tài năng và chủ đề cuộc đời.",
+        delivery: "Báo cáo AI chuyên sâu + 30 phút hỏi thêm"
+      }
+    },
     services: { ...en.services, title: "Dịch vụ", body: "Báo cáo cao cấp theo lịch hẹn cho tình cảm, hợp hôn, sự nghiệp tài vận và quyết định quan trọng.", items: en.services.items },
     booking: { ...en.booking, title: "Quy trình đặt lịch", body: "Thanh toán cọc ¥399 trước, trợ lý xác nhận lịch. Nếu chưa thanh toán phần còn lại, có thể hoàn cọc hoặc hủy lịch.", primaryCta: "Thanh toán cọc", secondaryCta: "Xem cấu trúc báo cáo" },
     clientCenter: { ...en.clientCenter, title: "Kế hoạch trung tâm khách hàng", body: "Sau này khách có thể xem lịch, tải báo cáo, gửi câu hỏi tiếp theo và nhận nhắc thanh toán tại đây.", items: ["Lịch của tôi", "Tải báo cáo", "Câu hỏi tiếp", "Nhắc thanh toán", "Lưu giao nhận"] },
