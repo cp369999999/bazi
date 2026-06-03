@@ -113,6 +113,17 @@ export interface InteractiveCopy {
   placeholders: Record<ToolKey, { name: string; placeholder: string }[]>;
   submit: string;
   previewNote: string;
+  fullReport: {
+    button: string;
+    note: string;
+    eyebrow: string;
+    defaultBirth: string;
+    defaultFocus: string;
+    title: string;
+    subtitleTemplate: string;
+    cta: string;
+    sections: { title: string; body: string; tags: string[] }[];
+  };
   resultEyebrow: string;
   emptyEyebrow: string;
   emptyTitle: string;
@@ -334,6 +345,25 @@ export const dictionaries: Record<LanguageCode, SiteDictionary> = {
       },
       submit: "生成预约前预览",
       previewNote: "预览不构成正式咨询结论。正式文稿长度按项目约 2000–4000 字，交付后 3 天内可追问一次。",
+      fullReport: {
+        button: "查看完整AI报告样例",
+        note: "单项预览只展示当前模块；完整报告样例会展示前世今生、事业财富、感情婚姻、流年运势等整套内容结构。",
+        eyebrow: "Full AI Report",
+        defaultBirth: "出生信息待补充",
+        defaultFocus: "综合命盘",
+        title: "完整AI命盘报告样例已生成",
+        subtitleTemplate: "基于「{birth}」与当前关注方向「{focus}」，系统会生成一整套结构化文稿。以下为正式报告的内容框架与样例表达。",
+        cta: "预约完整命盘详批 / 灵魂报告",
+        sections: [
+          { title: "① 命盘摘要", body: "先给出整体命盘结构、性格底层、五行偏向与人生主线。用户一打开报告，就能知道自己的核心优势、长期卡点和适合走的现实路径。", tags: ["性格底层", "五行结构", "人生主线"] },
+          { title: "② 前世今生", body: "用叙事型命盘分析解释反复出现的人生课题、关系牵引、潜意识惯性与天赋来源。它不做绝对神秘断言，而是帮助用户理解：为什么某些关系和情绪模式总会回来。", tags: ["前世能量", "今生课题", "灵魂关系"] },
+          { title: "③ 事业财富", body: "分析适合的事业战场、赚钱方式、资源路径、贵人类型与风险年份。重点不是一句“财运好不好”，而是给用户看清自己适合靠专业、资源、管理、流量还是长期信用赚钱。", tags: ["适合行业", "赚钱方式", "贵人资源"] },
+          { title: "④ 感情婚姻", body: "拆解恋爱模式、婚姻稳定性、另一半画像、复合概率、关系消耗点与沟通建议。尤其适合女性用户看清关系里真正的问题：是缘分不足，还是相处结构不稳。", tags: ["婚恋模式", "合盘参考", "关系建议"] },
+          { title: "⑤ 流年运势", body: "按未来几年拆出事业、财富、感情、健康与关键月份，提示什么时候适合推进，什么时候适合保守，什么时候需要避开冲动决策。", tags: ["年度主题", "关键月份", "避坑提醒"] },
+          { title: "⑥ 大运节点", body: "把人生十年周期做成时间线，标注上升期、调整期、关系转折期和财富窗口期。用户能看到长期趋势，而不是只看眼前一两个月的情绪波动。", tags: ["十年大运", "人生转折", "长期趋势"] },
+          { title: "⑦ 行动建议", body: "最后给出适合用户当下执行的建议：事业怎么选、关系怎么处理、钱应该怎么布局、什么时候该进、什么时候该退。报告必须落到现实动作上。", tags: ["现实建议", "决策参考", "下一步行动"] }
+        ]
+      },
       resultEyebrow: "AI Draft",
       emptyEyebrow: "Private Preview",
       emptyTitle: "选择一个项目，生成预约前预览",
@@ -511,6 +541,25 @@ function makeTraditionalInteractive(): InteractiveCopy {
     },
     submit: "生成預約前預覽",
     previewNote: "預覽不構成正式諮詢結論。正式文稿長度按項目約 2000–4000 字，交付後 3 天內可追問一次。",
+    fullReport: {
+      button: "查看完整AI報告樣例",
+      note: "單項預覽只展示當前模組；完整報告樣例會展示前世今生、事業財富、感情婚姻、流年運勢等整套內容結構。",
+      eyebrow: "Full AI Report",
+      defaultBirth: "出生資訊待補充",
+      defaultFocus: "綜合命盤",
+      title: "完整AI命盤報告樣例已生成",
+      subtitleTemplate: "基於「{birth}」與當前關注方向「{focus}」，系統會生成一整套結構化文稿。以下為正式報告的內容框架與樣例表達。",
+      cta: "預約完整命盤詳批 / 靈魂報告",
+      sections: [
+        { title: "① 命盤摘要", body: "先給出整體命盤結構、性格底層、五行偏向與人生主線。用戶一打開報告，就能知道自己的核心優勢、長期卡點和適合走的現實路徑。", tags: ["性格底層", "五行結構", "人生主線"] },
+        { title: "② 前世今生", body: "用敘事型命盤分析解釋反覆出現的人生課題、關係牽引、潛意識慣性與天賦來源。它不做絕對神秘斷言，而是幫助用戶理解某些關係和情緒模式為什麼總會回來。", tags: ["前世能量", "今生課題", "靈魂關係"] },
+        { title: "③ 事業財富", body: "分析適合的事業戰場、賺錢方式、資源路徑、貴人類型與風險年份。重點不是一句財運好不好，而是看清自己適合靠什麼獲得回報。", tags: ["適合行業", "賺錢方式", "貴人資源"] },
+        { title: "④ 感情婚姻", body: "拆解戀愛模式、婚姻穩定性、另一半畫像、復合概率、關係消耗點與溝通建議。尤其適合看清關係裡真正的問題。", tags: ["婚戀模式", "合盤參考", "關係建議"] },
+        { title: "⑤ 流年運勢", body: "按未來幾年拆出事業、財富、感情、健康與關鍵月份，提示什麼時候適合推進，什麼時候適合保守。", tags: ["年度主題", "關鍵月份", "避坑提醒"] },
+        { title: "⑥ 大運節點", body: "把人生十年週期做成時間線，標註上升期、調整期、關係轉折期和財富窗口期。", tags: ["十年大運", "人生轉折", "長期趨勢"] },
+        { title: "⑦ 行動建議", body: "最後給出適合當下執行的建議：事業怎麼選、關係怎麼處理、錢應該怎麼佈局、什麼時候該進退。", tags: ["現實建議", "決策參考", "下一步行動"] }
+      ]
+    },
     resultEyebrow: "AI Draft",
     emptyEyebrow: "Private Preview",
     emptyTitle: "選擇一個項目，生成預約前預覽",
@@ -544,6 +593,25 @@ function makeEnglishInteractive(): InteractiveCopy {
     },
     submit: "Generate Preview",
     previewNote: "This preview is not a formal consultation conclusion. Formal reports are about 2000–4000 words, with one follow-up within 3 days.",
+    fullReport: {
+      button: "View Full AI Report Sample",
+      note: "Single previews show only one module. The full sample displays past-life narrative, career wealth, love and marriage, yearly timing, and the complete report structure.",
+      eyebrow: "Full AI Report",
+      defaultBirth: "birth information pending",
+      defaultFocus: "full destiny chart",
+      title: "Full AI Destiny Report Sample Generated",
+      subtitleTemplate: "Based on “{birth}” and the current focus “{focus}”, the system will generate a complete structured report. Below is the content framework and sample delivery style.",
+      cta: "Book Full Chart / Soul Report",
+      sections: [
+        { title: "① Chart Summary", body: "Starts with the core chart structure, personality foundation, elemental tendency, and life theme so the client immediately sees strengths, long-term blocks, and realistic paths.", tags: ["Personality", "Elements", "Life Theme"] },
+        { title: "② Past Life & Present Life", body: "Uses a narrative chart reading to explain recurring life themes, relationship pull, subconscious patterns, and talent sources without making absolute mystical claims.", tags: ["Past Energy", "Life Lesson", "Soul Ties"] },
+        { title: "③ Career & Wealth", body: "Analyzes suitable career arenas, earning style, resource path, supporter type, and risk years. The focus is not whether money luck is good, but how to build returns.", tags: ["Industry", "Money Path", "Supporters"] },
+        { title: "④ Love & Marriage", body: "Breaks down dating style, marriage stability, partner profile, reunion probability, relationship drains, and communication advice.", tags: ["Love Pattern", "Compatibility", "Advice"] },
+        { title: "⑤ Yearly Fortune", body: "Maps the next years across career, wealth, relationships, health, and key months, showing when to advance and when to stay conservative.", tags: ["Annual Theme", "Key Months", "Risks"] },
+        { title: "⑥ Luck Cycle Nodes", body: "Turns ten-year cycles into a timeline and marks rising phases, adjustment phases, relationship turning points, and wealth windows.", tags: ["10-Year Cycle", "Turning Points", "Trend"] },
+        { title: "⑦ Action Advice", body: "Ends with practical next steps: how to choose career direction, handle relationships, arrange money, and decide when to move forward or step back.", tags: ["Practical Advice", "Decision", "Next Step"] }
+      ]
+    },
     resultEyebrow: "AI Draft",
     emptyEyebrow: "Private Preview",
     emptyTitle: "Choose a service to preview",
